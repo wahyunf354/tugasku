@@ -1,3 +1,5 @@
+import Cookies from 'js-cookie';
+
 function cookiesHandler() {
     function setCookies(tokenCredentials) {
         Cookies.set('credentials', tokenCredentials);
