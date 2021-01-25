@@ -9,8 +9,8 @@ function credentialManager() {
     async function createCredentials(loginInfo) {
         const credentials = new PasswordCredential({
             id: loginInfo.username,
+            name: loginInfo.url,
             password: loginInfo.password,
-            iconURL: loginInfo.url
         });
         await navigator.credentials.store(credentials);
         return credentials;

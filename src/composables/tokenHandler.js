@@ -11,7 +11,7 @@ function tokenHandler() {
             password: loginCred.password,
             service: 'moodle_mobile_app'
         }
-        const url = new URL("/login/token.php", loginCred.iconURL);
+        const url = new URL("/login/token.php", loginCred.name);
         url.search = new URLSearchParams(params).toString();
         return url;
     }
