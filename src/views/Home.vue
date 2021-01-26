@@ -5,21 +5,16 @@
 
 <script>
 import {ref} from 'vue';
-import Login from "@/views/Login";
-import cookiesHandler from "@/composables/cookiesHandler";
 import Landing from "@/views/Landing";
 import Dashboard from "@/views/Dashboard";
+import cookiesHandler from "@/composables/cookiesHandler";
 
 export default {
-  components: {Dashboard, Landing, Login},
+  components: {Landing, Dashboard},
   setup() {
     const {getCookies} = cookiesHandler();
     const hasTokenCred = ref(getCookies());
-
     return {hasTokenCred};
   }
 }
 </script>
-
-<style scoped>
-</style>

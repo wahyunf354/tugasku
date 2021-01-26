@@ -1,36 +1,39 @@
 <template>
   <div class="base-layout">
-    <form @submit.prevent="submitHandler">
-      <h1>Tugasku</h1>
-      <h2>Login dengan akun<br>e-learning mu</h2>
+    <Navbar/>
+    <div class="content">
+      <form @submit.prevent="submitHandler">
+        <h2>Login dengan akun<br>e-learning mu</h2>
 
-      <div class="container">
-        <label>Universitas
-          <select v-model="endpoint" required>
-            <option disabled value="">Pilih Universitas</option>
-            <option v-for="elearning in elearningList.data"
-                    :key="elearning.link"
-                    :value="elearning.link">
-              {{ elearning.universitas }}
-            </option>
-          </select>
-        </label>
-      </div>
+        <div class="form__container">
+          <label>Universitas
+            <select v-model="endpoint" required>
+              <option disabled value="">Pilih Universitas</option>
+              <option v-for="elearning in elearningList.data"
+                      :key="elearning.link"
+                      :value="elearning.link">
+                {{ elearning.universitas }}
+              </option>
+            </select>
+          </label>
+        </div>
 
-      <div class="container">
-        <label>Username
-          <input v-model="username" type="text" placeholder="Username" required/>
-        </label>
-      </div>
+        <div class="form__container">
+          <label>Username
+            <input v-model="username" type="text" placeholder="Username" required/>
+          </label>
+        </div>
 
-      <div class="container">
-        <label>Password
-          <input v-model="password" type="password" placeholder="*******" required/>
-        </label>
-      </div>
+        <div class="form__container">
+          <label>Password
+            <input v-model="password" type="password" placeholder="*******" required/>
+          </label>
+        </div>
 
-      <button>Login</button>
-    </form>
+        <button>Login</button>
+      </form>
+    </div>
+    <Footer/>
   </div>
 </template>
 
@@ -38,8 +41,11 @@
 import {onMounted, ref} from 'vue';
 import loginHandler from "@/composables/loginHandler";
 import elearningHandler from "@/composables/elearningHandler";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 export default {
+  components: {Navbar, Footer},
   setup() {
     const {hasLoginCredentials} = loginHandler();
     const {getElearning, elearningList} = elearningHandler();
@@ -73,34 +79,36 @@ export default {
 
 <style scoped>
 .base-layout {
-  max-width: 500px;
   height: 100vh;
   display: flex;
   margin: auto;
-  align-items: stretch;
-  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.content {
+  height: 100%;
+  margin: auto;
+  display: flex;
 }
 
 form {
   margin: auto;
-  width: 100%;
+  max-width: 500px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 
-.container {
-  width: 100%;
-  position: relative;
-  margin: 14px 0;
-}
-
-h2 {
+form h2 {
   width: 100%;
   color: #333333;
-  padding: 35px 0;
+  margin-bottom: 35px;
   line-height: 1.3;
-  font-weight: unset;
+}
+
+.form__container {
+  width: 100%;
+  margin: 14px 0;
+  position: relative;
 }
 
 label {
@@ -134,12 +142,23 @@ button {
   margin-top: 20px;
   font-weight: bold;
   background: black;
-  padding: 20px 0;
+  padding: 15px 0;
   border-radius: 30px;
 }
 
 button:hover {
   background: #dbdbdb;
   color: black;
+}
+
+@media screen and (max-width: 600px) {
+  form {
+    max-width: 100%;
+    padding: 30px;
+  }
+
+  form h2 {
+    font-size: 1rem;
+  }
 }
 </style>
