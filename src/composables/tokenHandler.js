@@ -2,7 +2,7 @@ import {ref} from 'vue';
 
 function tokenHandler() {
     const token = ref(null);
-    const isLoading = ref(true);
+    const isLoading = ref(false);
     const error = ref(null);
 
     function createTokenUrl(loginCred) {
@@ -17,7 +17,8 @@ function tokenHandler() {
     }
 
     async function getToken(loginCred) {
-        const url = createTokenUrl(loginCred)
+        const url = createTokenUrl(loginCred);
+        isLoading.value = true;
 
         try {
             const res = await fetch(url, {method: "POST"});
@@ -25,10 +26,10 @@ function tokenHandler() {
             if (data.error) {
                 throw Error("Username atau password yang anda masukkan salah");
             }
-            token.value = data.token
+            token.value = data.token;
         } catch (err) {
-            error.value = err.message
             isLoading.value = false;
+            error.value = err.message;
         }
     }
 

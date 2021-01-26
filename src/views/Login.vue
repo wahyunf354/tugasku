@@ -1,14 +1,17 @@
 <template>
   <div class="base-layout">
     <Navbar/>
+    <ProgressBar v-if="isLoading"/>
     <div class="content">
       <form @submit.prevent="submitHandler">
         <h2>Login dengan akun<br>e-learning mu</h2>
+        <span class="error">{{ error }}</span>
 
         <div class="form__container">
           <label>Universitas
             <select v-model="endpoint" required>
-              <option disabled value="">Pilih Universitas</option>
+              <option v-if="elearningList.data" disabled value="">Pilih Universitas</option>
+              <option v-else disabled value="">Sedang mengambil data...</option>
               <option v-for="elearning in elearningList.data"
                       :key="elearning.link"
                       :value="elearning.link">
@@ -38,22 +41,23 @@
 </template>
 
 <script>
-import {onMounted, ref} from 'vue';
-import loginHandler from "@/composables/loginHandler";
-import elearningHandler from "@/composables/elearningHandler";
+import {watchEffect, onMounted, ref} from 'vue';
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import ProgressBar from "@/components/ProgressBar";
+import loginHandler from "@/composables/loginHandler";
+import elearningHandler from "@/composables/elearningHandler";
 
 export default {
-  components: {Navbar, Footer},
+  components: {ProgressBar, Navbar, Footer},
   setup() {
-    const {hasLoginCredentials} = loginHandler();
-    const {getElearning, elearningList} = elearningHandler();
-    const {isLoading, error, logUserIn} = loginHandler();
-
     const username = ref('');
     const password = ref('');
     const endpoint = ref('');
+
+    const {hasLoginCredentials} = loginHandler();
+    const {isLoading, error, logUserIn} = loginHandler();
+    const {getElearning, elearningList} = elearningHandler();
 
     onMounted(async () => {
       await hasLoginCredentials();
@@ -86,14 +90,14 @@ export default {
 }
 
 .content {
-  height: 100%;
+  height: 80%;
   margin: auto;
   display: flex;
 }
 
 form {
   margin: auto;
-  max-width: 500px;
+  max-width: 400px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -101,8 +105,12 @@ form {
 form h2 {
   width: 100%;
   color: #333333;
-  margin-bottom: 35px;
   line-height: 1.3;
+}
+
+form span {
+  color: red;
+  margin: 20px 0;
 }
 
 .form__container {
@@ -112,7 +120,7 @@ form h2 {
 }
 
 label {
-  font-size: 17px;
+  font-size: 0.9rem;
   color: #999999;
   padding-bottom: 10px;
 }
@@ -121,9 +129,9 @@ input, select, button {
   width: 100%;
   border: none;
   outline: none;
-  font-size: 17px;
+  font-size: 0.9rem;
   margin-top: 5px;
-  padding: 10px 0;
+  padding: 10px 4px;
   background: transparent;
   border-bottom: 2px solid #dbdbdb;
 }
@@ -158,7 +166,7 @@ button:hover {
   }
 
   form h2 {
-    font-size: 1rem;
+    font-size: 1em;
   }
 }
 </style>
