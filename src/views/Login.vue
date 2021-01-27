@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import {watchEffect, onMounted, ref} from 'vue';
+import {onMounted, ref} from 'vue';
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ProgressBar from "@/components/ProgressBar";
