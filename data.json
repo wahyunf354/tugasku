@@ -1,0 +1,63 @@
+{
+  "events": [
+    {
+      "id": 13928,
+      "name": "UNGGAH TUGAS KELOMPOK PRESENTASE is due",
+      "description": "",
+      "descriptionformat": 1,
+      "categoryid": 0,
+      "groupid": null,
+      "userid": 84,
+      "repeatid": null,
+      "eventcount": null,
+      "modulename": "assign",
+      "instance": 36765,
+      "eventtype": "due",
+      "timestart": 1605546000,
+      "timeduration": 0,
+      "timesort": 1605546000,
+      "visible": 1,
+      "timemodified": 1604989805,
+      "icon": {
+        "key": "icon",
+        "component": "assign",
+        "alttext": "Activity event"
+      },
+      "course": {
+        "id": 3875,
+        "fullname": "PENDIDIKAN KEWARGANEGARAAN ",
+        "shortname": "ILKOM-19C PENDIDIKAN KEWARGANEGARAAN ",
+        "idnumber": "",
+        "summary": "",
+        "summaryformat": 1,
+        "startdate": 1599325200,
+        "enddate": 1630861200,
+        "fullnamedisplay": "PENDIDIKAN KEWARGANEGARAAN ",
+        "viewurl": "https://elearningfmipa.unimed.ac.id/course/view.php?id=3875"
+      },
+      "subscription": {
+        "displayeventsource": false
+      },
+      "canedit": false,
+      "candelete": false,
+      "deleteurl": "https://elearningfmipa.unimed.ac.id/calendar/delete.php?id=13928&course=3875",
+      "editurl": "https://elearningfmipa.unimed.ac.id/course/mod.php?update=36765&return=1&sesskey=LvGuhcn0iW",
+      "viewurl": "https://elearningfmipa.unimed.ac.id/calendar/view.php?view=day&course=3875&time=1605546000#event_13928",
+      "formattedtime": "<span class=\"dimmed_text\">00:00</span>",
+      "isactionevent": true,
+      "iscourseevent": false,
+      "iscategoryevent": false,
+      "groupname": null,
+      "url": "https://elearningfmipa.unimed.ac.id/mod/assign/view.php?id=36765",
+      "action": {
+        "name": "Add submission",
+        "url": "https://elearningfmipa.unimed.ac.id/mod/assign/view.php?id=36765&amp;action=editsubmission",
+        "itemcount": 1,
+        "actionable": true,
+        "showitemcount": false
+      }
+    }
+  ],
+  "firstid": 13928,
+  "lastid": 17011
+}

@@ -20,11 +20,12 @@
 </template>
 
 <script>
+import Button from "@/components/Button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export default {
-  components: {Footer, Navbar}
+  components: {Footer, Navbar, Button}
 }
 </script>
 
