@@ -36,7 +36,15 @@ export default {
   components: {Footer, Navbar, Assignment, Button},
   data(){
     return {
-      isNotEmptyAssignment: false
+      isNotEmptyAssignment: false,
+      // assignmentList: [
+      //   {
+      //     course: { fullname: "asdfsd" },
+      //     name: "BLALAL",
+      //     timestart: 234135,
+      //     url: "asd.com"
+      //   }
+      // ]
     }
   },
   setup() {
@@ -50,8 +58,13 @@ export default {
       router.go(0);
     }
 
+
+    if (assignmentList.length > 0) {
+      this.isNotEmptyAssignment = true
+    }
+
     return {assignmentList, logUserOut}
-  }
+  },
 }
 </script>
 

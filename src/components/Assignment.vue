@@ -6,18 +6,13 @@
         <h5 class="content__course">{{ courseName }}</h5>
         <p class="content__name">{{ assignmentName }}</p>
       </div>
-      <div class="arrow-icon">
-        <MenuLeft decorative/>
-      </div>
     </a>
   </div>
 </template>
 
 <script>
-import MenuLeft from "vue-material-design-icons/MenuLeft.vue"
 
 export default {
-  components: {MenuLeft},
   props: ['assignment'],
   setup(props) {
     const assignment = props.assignment;
